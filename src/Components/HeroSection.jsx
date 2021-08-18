@@ -1,15 +1,24 @@
 import styled from "styled-components";
 import imageOne from "../Assets/imageOne.png";
 
+import { motion } from "framer-motion";
+import { fade, titleAnimate, genericAnimate, imageAnimation } from "../animate";
+
 const HeroSection = () => {
   return (
-    <Header>
+    <Header variants={genericAnimate} initial="hidden" animate="show">
       <TitleContainer>
-        <h1>Is Your Birthday Lucky?</h1>
-        <h1>Let's find out.</h1>
+        <Hide>
+          <motion.h1 variants={titleAnimate}>
+            Is Your Birthday <span>Lucky</span>?
+          </motion.h1>
+        </Hide>
+        <Hide>
+          <motion.h1 variants={titleAnimate}>Let's find out.</motion.h1>
+        </Hide>
       </TitleContainer>
       <ImageContainer>
-        <img src={imageOne} alt="" />
+        <motion.img variants={imageAnimation} src={imageOne} alt="" />
       </ImageContainer>
     </Header>
   );
@@ -19,7 +28,7 @@ export default HeroSection;
 
 /* ---------------------------- Styled Components --------------------------- */
 
-const Header = styled.header`
+const Header = styled(motion.header)`
   min-height: 100vh;
   background-color: #000000;
   color: #fff;
@@ -33,14 +42,24 @@ const TitleContainer = styled.div`
     font-size: 4rem;
     font-weight: bold;
   }
+
+  span {
+    color: #6c63ff;
+  }
 `;
 
 const ImageContainer = styled.div`
+  overflow: hidden;
   padding-right: 3rem;
   display: flex;
   align-items: flex-end;
   flex: 0.4;
   img {
-
+    height: 70vh;
+    object-fit: cover;
   }
+`;
+
+const Hide = styled.div`
+  overflow: hidden;
 `;

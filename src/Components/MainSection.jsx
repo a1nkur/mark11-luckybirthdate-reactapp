@@ -2,8 +2,12 @@ import styled from "styled-components";
 import neutral from "../Assets/neutral.png";
 import lucky from "../Assets/lucky.png";
 import unlucky from "../Assets/unlucky.png";
+import AnimateWhenVisible from "./AnimateWhenVisible";
 
 import { AiOutlineCloseCircle } from "react-icons/ai";
+
+import { motion } from "framer-motion";
+import { fade, titleAnimate, genericAnimate, imageAnimation } from "../animate";
 
 import { useEffect, useState } from "react";
 
@@ -67,37 +71,44 @@ const MainSection = () => {
   };
 
   return (
-    <Main>
+    <Main variants={genericAnimate} initial="hidden" animate="show">
       <InputContainer>
         {isLucky === null ? (
           <div className="texts">
             <h3>
-              Enter your <span className="neutral-luck">birthdate</span> and{" "}
-              <span className="neutral-luck">lucky number</span>
+              Enter your
+              <AnimateWhenVisible>
+                <span className="neutral-luck">birthdate</span>
+              </AnimateWhenVisible>
+              and{""}
+              <AnimateWhenVisible>
+                <span className="neutral-luck">lucky number</span>
+              </AnimateWhenVisible>
             </h3>
             <h3> to break the suspense !</h3>
           </div>
         ) : null}
         {isLucky === true ? (
           <div className="texts">
-            <h3>
-              Seems like you are one <span className="lucko">Lucky</span>{" "}
+            <motion.h3 variants={titleAnimate}>
+              Seems like you are one <span className="lucko">Lucky</span>
+              {" "}
               fellow.
-            </h3>
-            <h3>
+            </motion.h3>
+            <motion.h3 variants={titleAnimate}>
               Lead a <span className="lucko">charmed</span> life.
-            </h3>
+            </motion.h3>
           </div>
         ) : null}
         {isLucky === false ? (
           <div className="texts">
-            <h3>
+            <motion.h3 variants={titleAnimate}>
               Oh snap! <span className="unlucko">Not that lucky</span>, huh?
-            </h3>
-            <h3>
+            </motion.h3>
+            <motion.h3 variants={titleAnimate}>
               Keep looking for some{" "}
               <span className="unlucko">miracle to happen.</span>
-            </h3>
+            </motion.h3>
           </div>
         ) : null}
 
@@ -146,9 +157,17 @@ const MainSection = () => {
         )}
       </InputContainer>
       <ImageContainer>
-        {isLucky === null ? <img src={neutral} alt="neutral" /> : null}
-        {isLucky === true ? <img src={lucky} alt="lucky" /> : null}
-        {isLucky === false ? <img src={unlucky} alt="unlucky" /> : null}
+        {isLucky === null ? (
+          <AnimateWhenVisible>
+            <img src={neutral} alt="neutral" />
+          </AnimateWhenVisible>
+        ) : null}
+        {isLucky === true ? (
+          <motion.img variants={imageAnimation} src={lucky} alt="lucky" />
+        ) : null}
+        {isLucky === false ? (
+          <motion.img variants={imageAnimation} src={unlucky} alt="unlucky" />
+        ) : null}
       </ImageContainer>
     </Main>
   );
@@ -158,7 +177,7 @@ export default MainSection;
 
 /* ---------------------------- Styled Components --------------------------- */
 
-const Main = styled.main`
+const Main = styled(motion.main)`
   min-height: 100vh;
   padding: 10rem 5rem;
   display: flex;
@@ -186,6 +205,7 @@ const InputContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  overflow: hidden;
   flex: 0.4;
   order: 1;
 `;
