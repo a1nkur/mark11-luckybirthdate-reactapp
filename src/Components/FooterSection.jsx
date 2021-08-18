@@ -1,25 +1,25 @@
 import styled from "styled-components";
 
 import { GoMarkGithub } from "react-icons/go";
-import { CgProfile } from "react-icons/cg";
+// import { CgProfile } from "react-icons/cg";
 import { AiOutlineLinkedin, AiFillTwitterCircle } from "react-icons/ai";
 
 const FooterSection = () => {
   return (
     <Footer>
       <Links>
-        <a href="https://github.com/ankur29mac" target="_blank">
+        <a href="https://github.com/ankur29mac">
           <GoMarkGithub style={{ color: "#fff" }} size={30} />{" "}
         </a>
-        <a href="">
+        <a href="https://twitter.com/ankur29mac">
           <AiFillTwitterCircle style={{ color: "#fff" }} size={30} />
         </a>
-        <a href="">
+        <a href="https://www.linkedin.com/in/ankur-kumar-ba3833202/">
           <AiOutlineLinkedin style={{ color: "#fff" }} size={30} />
         </a>
-        <a href="">
+        {/* <a href="">
           <CgProfile style={{ color: "#fff" }} size={30} />
-        </a>
+        </a> */}
       </Links>
       <FooterText>
         <p> © 2021 | ankur29mac</p>

@@ -7,9 +7,9 @@ import AnimateWhenVisible from "./AnimateWhenVisible";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import { motion } from "framer-motion";
-import { fade, titleAnimate, genericAnimate, imageAnimation } from "../animate";
+import { titleAnimate, genericAnimate, imageAnimation } from "../animate";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const MainSection = () => {
   // State
@@ -91,8 +91,7 @@ const MainSection = () => {
         {isLucky === true ? (
           <div className="texts">
             <motion.h3 variants={titleAnimate}>
-              Seems like you are one <span className="lucko">Lucky</span>
-              {" "}
+              Seems like you are one <span className="lucko">Lucky</span>{" "}
               fellow.
             </motion.h3>
             <motion.h3 variants={titleAnimate}>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import imageOne from "../Assets/imageOne.png";
 
 import { motion } from "framer-motion";
-import { fade, titleAnimate, genericAnimate, imageAnimation } from "../animate";
+import { titleAnimate, genericAnimate, imageAnimation } from "../animate";
 
 const HeroSection = () => {
   return (
